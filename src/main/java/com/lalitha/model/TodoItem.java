@@ -3,6 +3,7 @@ package com.lalitha.model;
 import com.lalitha.util.IDGen;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TodoItem {
     private int id;
@@ -68,12 +69,28 @@ public class TodoItem {
     public boolean isOverdue(){
         return this.deadLine.isBefore(LocalDate.now());
     }
-    public String getSummary(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("ID: ").append(id);
-        sb.append(", Title: ").append(title);
-        sb.append(", Task desc: ").append(taskDescription);
-        sb.append(", Deadline: ").append(deadLine);
-        return sb.toString();
+
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadLine=" + deadLine +
+                ", done=" + done +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItem todoItem = (TodoItem) o;
+        return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadLine, todoItem.deadLine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, taskDescription, deadLine, done);
     }
 }

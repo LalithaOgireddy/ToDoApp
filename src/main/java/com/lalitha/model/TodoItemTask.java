@@ -2,6 +2,8 @@ package com.lalitha.model;
 
 import com.lalitha.util.IDGen;
 
+import java.util.Objects;
+
 public class TodoItemTask {
     private int id;
     private boolean assigned;
@@ -43,13 +45,25 @@ public class TodoItemTask {
         this.assignee = assignee;
     }
 
-    public String getSummary(){
-        StringBuilder sb=new StringBuilder();
-        sb.append("{ id: ").append(id);
-        sb.append(" , assigned: ").append(assigned);
-        sb.append(" , todoItem: ").append(todoItem.getSummary());
-        sb.append(" , assignee: ").append(assignee != null ? assignee.getFirstName()+" "+assignee.getLastname():"Null");
-        sb.append("}");
-        return sb.toString();
+    @Override
+    public String toString() {
+        return "TodoItemTask{" +
+                "id=" + id +
+                ", assigned=" + assigned +
+                ", todoItem=" + todoItem +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return id == that.id && assigned == that.assigned && Objects.equals(todoItem, that.todoItem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, assigned, todoItem);
     }
 }
