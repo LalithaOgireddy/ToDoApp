@@ -15,8 +15,8 @@ public class Main {
 
         TodoItem todoItem=new TodoItem("Cleaning Garage","declutter and oranize garage", LocalDate.of(2024,11,17),person);
 
-        System.out.println( person.getSummary());
-        System.out.println( todoItem.getSummary());
+        System.out.println( person.toString());
+        System.out.println( todoItem.toString());
 
         todoItem.setDone(true);
         if(todoItem.isOverdue()){
@@ -27,8 +27,8 @@ public class Main {
 
 
         TodoItemTask task1= new TodoItemTask(todoItem,person);
-        System.out.println(task1.getSummary());
+        System.out.println(task1.toString());
         task1.setAssignee(person2);
-        System.out.println(task1.getSummary());
+        System.out.println(task1.toString());
     }
 }

@@ -7,14 +7,14 @@ import java.util.Objects;
 public class Person {
     private int id;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String email;
     private AppUser credentials;
 
     public Person(String firstName, String lastName, String email) {
         this.id = IDGen.nextIdForPerson();
         this.setFirstName(firstName);
-        this.setLastname(lastName);
+        this.setLastName(lastName);
         this.setEmail(email);
     }
 
@@ -30,12 +30,12 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -59,7 +59,7 @@ public class Person {
         return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
@@ -69,11 +69,11 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastname, person.lastname) && Objects.equals(email, person.email);
+        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(email, person.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastname, email);
+        return Objects.hash(id, firstName, lastName, email);
     }
 }

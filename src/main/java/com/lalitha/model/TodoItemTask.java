@@ -14,7 +14,6 @@ public class TodoItemTask {
         this.id= IDGen.nextIdForTodoItemTask();
         this.todoItem = todoItem;
         this.setAssignee(assignee);
-
     }
 
     public int getId() {
@@ -43,6 +42,8 @@ public class TodoItemTask {
 
     public void setAssignee(Person assignee) {
         this.assignee = assignee;
+        if(assignee != null) this.assigned=true;
+        else this.assigned=false;
     }
 
     @Override
